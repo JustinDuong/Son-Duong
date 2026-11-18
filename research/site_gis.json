@@ -1,0 +1,74 @@
+{
+ "_note": "From OC GIS (ocgis.com) Parcels + Building_Footprints, CA State Plane Zone VI ft (EPSG:2230), shifted so the lot's SW corner is (0,0). +X = east (toward Hunter Ln), +Y = north. GIS data is approximate; a licensed survey governs.",
+ "origin_epsg2230": [
+  6036542.8929988,
+  2220425.2599198967
+ ],
+ "parcel_ft": [
+  [
+   0.0,
+   0.9
+  ],
+  [
+   0.48,
+   63.1
+  ],
+  [
+   116.48,
+   62.2
+  ],
+  [
+   115.99,
+   0.0
+  ],
+  [
+   0.0,
+   0.9
+  ]
+ ],
+ "lot_width_ns_ft": 62.2,
+ "lot_depth_ew_ft": 116.0,
+ "lot_area_sqft": 7215,
+ "street": {
+  "name": "Hunter Ln",
+  "side": "east",
+  "centerline_x_ft": 140.5,
+  "note": "centerline ~24 ft east of front property line"
+ },
+ "existing_footprint_gis_ft": [
+  [
+   91.3,
+   41.5
+  ],
+  [
+   90.7,
+   5.1
+  ],
+  [
+   56.4,
+   5.6
+  ],
+  [
+   57.3,
+   59.1
+  ],
+  [
+   81.9,
+   58.7
+  ],
+  [
+   81.6,
+   41.6
+  ],
+  [
+   91.3,
+   41.5
+  ]
+ ],
+ "existing_footprint_area_sqft": 1669,
+ "existing_height_ft": 10.1,
+ "unmapped_structures_seen_on_aerial": [
+  "red-roof structure attached to rear of house approx x 42-57, y 23-42",
+  "small shed approx x 36-48, y 13-23"
+ ]
+}

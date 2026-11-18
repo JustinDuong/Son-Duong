@@ -38,7 +38,7 @@ A6.0 details · S1.0 foundation · S2.0 framing · E1.0 electrical · P1.0 plumb
 (+ energy compliance forms where required).
 
 ## Project facts
-See `project.json`. Fields still marked `(TBD)` are unknown — ask the owner, don't invent them.
+See `project.json` and `research/property_research.md` (parcel, zoning, ADU rules, hazards). Lot geometry for the site plan: `research/site_gis.json`. Fields still marked `(TBD)` are unknown — ask the owner, don't invent them.
 Never guess structural sizes (footings, beams, headers, shear walls): mark them
 "PER STRUCTURAL ENGINEER" until engineering is provided.
 

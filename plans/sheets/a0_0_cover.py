@@ -17,6 +17,8 @@ def build():
     yy = y1 - 3.0
     text(msp, "PROJECT DATA", (x0 + 0.5, yy), h=0.22, layer="A-ANNO-TITL")
     data = [("OWNER", P["owner"]), ("APN", P["apn"]), ("JURISDICTION", P["jurisdiction"]),
+            ("ZONING", P.get("zoning", "")), ("GENERAL PLAN", P.get("general_plan", "")),
+            ("LOT AREA", P.get("lot_area", "")), ("TRACT", P.get("tract", "")),
             ("CODE BASIS", P["code_basis"]), ("OCCUPANCY", P["occupancy"]),
             ("CONSTRUCTION TYPE", P["construction_type"])]
     for i, (k, v) in enumerate(data):
