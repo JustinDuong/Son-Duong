@@ -1,0 +1,89 @@
+{
+ "source": "OC GIS OC_DEM_1m_2023 (verify units/datum; survey governs)",
+ "points": {
+  "SW lot corner": {
+   "xy_ft": [
+    0,
+    0
+   ],
+   "value": 46.680244446
+  },
+  "NW lot corner": {
+   "xy_ft": [
+    0,
+    62.2
+   ],
+   "value": 46.58234787
+  },
+  "SE lot corner": {
+   "xy_ft": [
+    116,
+    0
+   ],
+   "value": 44.838897705
+  },
+  "NE lot corner": {
+   "xy_ft": [
+    116,
+    62.2
+   ],
+   "value": 44.915992737
+  },
+  "ADU SW": {
+   "xy_ft": [
+    5,
+    5
+   ],
+   "value": 46.619068146
+  },
+  "ADU NW": {
+   "xy_ft": [
+    5,
+    43.6
+   ],
+   "value": 46.951873779
+  },
+  "ADU SE": {
+   "xy_ft": [
+    25.2,
+    5
+   ],
+   "value": 46.705753326
+  },
+  "ADU NE": {
+   "xy_ft": [
+    25.2,
+    43.6
+   ],
+   "value": 46.38980484
+  },
+  "ADU center": {
+   "xy_ft": [
+    15,
+    24
+   ],
+   "value": 46.585273743
+  },
+  "rear yard mid": {
+   "xy_ft": [
+    32,
+    30
+   ],
+   "value": 46.294708252
+  },
+  "front P/L mid": {
+   "xy_ft": [
+    116,
+    31
+   ],
+   "value": 45.241825104
+  },
+  "street C/L": {
+   "xy_ft": [
+    140.5,
+    31
+   ],
+   "value": 44.688388824
+  }
+ }
+}

@@ -109,7 +109,7 @@ def build():
     y = header(msp, c2, y - 0.2, w, "CALGREEN MANDATORY MEASURES - RESIDENTIAL (1 OF 2)")
     y = para(msp, c2, y, CALGREEN_A, w)
     y = header(msp, c3, top, w, "CALGREEN MANDATORY MEASURES - RESIDENTIAL (2 OF 2)")
-    y3 = para(msp, c3, y, CALGREEN_B, w)
+    para(msp, c3, y, CALGREEN_B, w)
 
     # ---- abbreviations (col 1, two sub-columns)
     y = header(msp, c1, ya + 8.4, w, "ABBREVIATIONS")
