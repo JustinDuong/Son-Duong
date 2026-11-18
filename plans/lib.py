@@ -238,8 +238,11 @@ def window(blk, p1, p2, wall_t=ft(0, 4.5), layer="A-GLAZ"):
     (x1, y1), (x2, y2) = p1, p2
     L = math.hypot(x2 - x1, y2 - y1)
     nx, ny = -(y2 - y1) / L, (x2 - x1) / L
-    for o in (-wall_t / 2, 0, wall_t / 2):
+    for o in (-wall_t / 2, -wall_t / 6, wall_t / 6, wall_t / 2):
         blk.add_line((x1 + nx * o, y1 + ny * o), (x2 + nx * o, y2 + ny * o), dxfattribs={"layer": layer})
+    for (px, py) in ((x1, y1), (x2, y2)):  # jambs
+        blk.add_line((px - nx * wall_t / 2, py - ny * wall_t / 2), (px + nx * wall_t / 2, py + ny * wall_t / 2),
+                     dxfattribs={"layer": layer})
 
 
 def north_arrow(msp, pos, size=0.6):
