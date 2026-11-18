@@ -42,12 +42,13 @@ WTR_N = (113.0, 54.5)        # (N) water meter
 GAS_E = (64.0, 59.6)         # (E) gas meter on north wall of house
 GAS_N = (61.0, 59.6)         # (N) gas meter
 ELE_E = (70.0, 59.6)         # (E) electric meter / 200A panel
-SUB_ADU = (AX + AW, AY + AL - 4.0)   # (N) 200A sub-panel on ADU east wall near kitchen
+SUB_ADU = (AX + 4.6, AY + AL + 0.5)  # (N) 200A sub-panel on ADU north wall (exterior)
 TRENCH_Y = 61.0
 ADU_STUB = (AX + 3.0, AY + AL)       # utilities enter ADU at NW (kitchen/laundry side)
 SEWER_OUT = (AX + 2.5, AY + AL)      # sewer leaves north wall near laundry/baths
 SEWER_TIE = (57.0, 61.6)             # connect to (E) building sewer (VIF)
-CONDENSER = (AX + AW + 1.0, AY + 12.0, AX + AW + 4.0, AY + 15.0)   # east side, by bedroom 1/2 wall
+CONDENSER = (AX + AW + 1.0, AY + 9.0, AX + AW + 4.0, AY + 12.0)    # east side, between bedroom windows
+WH = (AX + 0.3, AY + AL + 0.2, AX + 2.8, AY + AL + 2.7)            # HPWH enclosure at NW corner
 
 ELEV = json.loads((ROOT / "research" / "elevations_dem.json").read_text())["points"]
 FF = 47.60
@@ -59,7 +60,7 @@ def poly_len(pts):
 
 WATER_RUN = [WTR_N, (WTR_N[0], TRENCH_Y), (ADU_STUB[0], TRENCH_Y), ADU_STUB]
 GAS_RUN = [GAS_N, (GAS_N[0], TRENCH_Y), (ADU_STUB[0], TRENCH_Y), ADU_STUB]
-ELEC_RUN = [ELE_E, (ELE_E[0], TRENCH_Y), (SUB_ADU[0] - 1.0, TRENCH_Y), (SUB_ADU[0] - 1.0, AY + AL),]
+ELEC_RUN = [ELE_E, (ELE_E[0], TRENCH_Y), (SUB_ADU[0], TRENCH_Y), SUB_ADU]
 SEWER_RUN = [SEWER_OUT, (SEWER_OUT[0], SEWER_TIE[1]), SEWER_TIE]
 
 KEYNOTES = [
@@ -182,7 +183,7 @@ def draw(blk):
     # ---- equipment
     rect_ft(blk, CONDENSER, "A-ANNO")
     btext(blk, "HP", P((CONDENSER[0] + CONDENSER[2]) / 2, (CONDENSER[1] + CONDENSER[3]) / 2), 0.08, SC)
-    wh = (AX + AW + 1.0, AY + 30.0, AX + AW + 3.5, AY + 32.5)
+    wh = WH
     rect_ft(blk, wh, "A-ANNO")
     btext(blk, "WH", P((wh[0] + wh[2]) / 2, (wh[1] + wh[3]) / 2), 0.08, SC)
 
@@ -212,7 +213,7 @@ def draw(blk):
         x, y = ELEV[name]["xy_ft"]
         spot(blk, (x + (-1.6 if x < 10 else 1.6), y + (-1.6 if y < 10 else 1.6)), ELEV[name]["value"], "EG ")
     for a, b in [((AX + AW + 1.5, AY + 22), (AX + AW + 9, AY + 22)), ((AX + 8, AY - .6), (AX + 8, 1.2)),
-                 ((AX + 8, AY + AL + 1.5), (AX + 8, AY + AL + 6.5)), ((AX - .6, AY + 22), (1.0, AY + 22)),
+                 ((AX + AW - 2, AY + AL + 1.5), (AX + AW - 2, AY + AL + 6.5)), ((AX - .6, AY + 22), (1.0, AY + 22)),
                  ((60, 10), (90, 8)), ((88, 30), (110, 30)), ((60, 52), (78, 52))]:
         arrow(blk, a, b)
     btext(blk, "SURFACE DRAINAGE TO STREET (E)", P(100, 26.5), 0.08, SC)
@@ -234,9 +235,9 @@ def draw(blk):
     tags = [
         (1, (66, 22), (70, 26)), (2, (49, 46.5), (49, 41)), (3, (42, 10.5), (42, 13.5)), (4, (106, 44), (100, 47)),
         (5, (-3.5, 20), (0, 18)), (6, (119.5, 57.5), WTR_E), (7, (119.5, 53.5), WTR_N), (8, (66, 65.5), GAS_E),
-        (9, (59, 65.5), GAS_N), (10, (73, 65.5), ELE_E), (11, (AX + AW + 4.5, AY + AL - 2.0), SUB_ADU),
-        (12, (40, 65.5), (40, TRENCH_Y)), (13, (52, 65.5), (52, SEWER_TIE[1])), (14, (AX + AW + 6.5, AY + 13.5), (CONDENSER[2], AY + 13.5)),
-        (15, (AX + AW + 6.5, AY + 31.25), (wh[2], AY + 31.25)), (16, (32, 55.5), (32, TRENCH_Y - 1)),
+        (9, (59, 65.5), GAS_N), (10, (73, 65.5), ELE_E), (11, (AX + 8.5, AY + AL + 6.5), SUB_ADU),
+        (12, (40, 65.5), (40, TRENCH_Y)), (13, (52, 65.5), (52, SEWER_TIE[1])), (14, (AX + AW + 6.5, AY + 10.5), (CONDENSER[2], AY + 10.5)),
+        (15, (AX - 2.6, AY + AL + 4.5), (wh[0], (wh[1] + wh[3]) / 2)), (16, (32, 55.5), (32, TRENCH_Y - 1)),
         (17, (AX - 2.6, AY + 12), (AX - 1, AY + 10)), (18, (31.5, 16), (AX + AW - 1, AY + 9)),
         (19, (AX + AW + 4.5, AY + 4), (AX + AW, AY + 1.0)),
     ]

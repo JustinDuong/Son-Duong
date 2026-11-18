@@ -201,6 +201,20 @@ def wall(blk, p1, p2, thickness=ft(0, 4.5), layer="A-WALL"):
     blk.add_lwpolyline(pts, close=True, dxfattribs={"layer": layer})
 
 
+def wall_openings(blk, p1, p2, thickness, openings, layer="A-WALL"):
+    """Wall p1->p2 with gaps. openings = [(start, end)] as distances from p1 along the wall."""
+    import math
+    L = math.hypot(p2[0] - p1[0], p2[1] - p1[1])
+    ux, uy = (p2[0] - p1[0]) / L, (p2[1] - p1[1]) / L
+    cuts = [0.0]
+    for a, b in sorted(openings):
+        cuts += [a, b]
+    cuts.append(L)
+    for a, b in zip(cuts[0::2], cuts[1::2]):
+        if b - a > 0.01:
+            wall(blk, (p1[0] + ux * a, p1[1] + uy * a), (p1[0] + ux * b, p1[1] + uy * b), thickness, layer)
+
+
 def dim(blk, p1, p2, offset, scale_name, angle=None, layer="A-DIMS"):
     """Linear dimension in real units; text sized for the plot scale (3/32" on paper)."""
     k = SCALES[scale_name]
