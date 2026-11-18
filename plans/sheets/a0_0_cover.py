@@ -6,39 +6,9 @@ from ezdxf.enums import TextEntityAlignment
 from plans import adu_model as M
 from plans.lib import PROJECT, ROOT, ft_in, mtext, new_sheet, rect, text
 from plans.sheet_index import SHEET_INDEX
+from plans.textblocks import H, LS, header, para, rows
 
 NUMBER, TITLE = "A0.0", "COVER SHEET & PROJECT DATA"
-H = 0.14          # body text height
-LS = 0.25         # line spacing
-
-
-def header(msp, x, y, w, title):
-    """Section header bar; returns y of first body line."""
-    rect(msp, x, y - 0.32, x + w, y, "A-ANNO")
-    text(msp, title, (x + w / 2, y - 0.16), h=0.16, layer="A-ANNO-TITL", align=TextEntityAlignment.MIDDLE_CENTER)
-    return y - 0.55
-
-
-def rows(msp, x, y, items, col2, w=None):
-    """Two-column label/value rows; returns next y."""
-    for k, v in items:
-        text(msp, k, (x + 0.1, y), h=H)
-        if w:
-            mtext(msp, v, (x + col2, y + H), h=H, width=w)
-            y -= LS * max(1, (len(v) * H * 0.9) // w + 1)
-        else:
-            text(msp, v, (x + col2, y), h=H)
-            y -= LS
-    return y
-
-
-def para(msp, x, y, lines, w):
-    """Numbered/plain lines as wrapped mtext; returns approx next y."""
-    for ln in lines:
-        mtext(msp, ln, (x + 0.1, y + H), h=H, width=w - 0.2)
-        n = max(1, int(len(ln) * H * 0.82 / (w - 0.2)) + 1)
-        y -= LS * n + 0.04
-    return y
 
 
 def vicinity_map(msp, x0, y0, size):
@@ -117,7 +87,8 @@ def build():
         "4. NEW NEEA-RATED HEAT PUMP WATER HEATER.",
         "5. NEW WATER AND GAS SERVICE TO ADU PER UTILITY / PLUMBING PLAN.",
         "6. PHOTOVOLTAIC SYSTEM PER TITLE 24 (DEFERRED SUBMITTAL).",
-        "7. EXISTING 1-STORY SINGLE-FAMILY RESIDENCE TO REMAIN - NO WORK.",
+        "7. REMOVE (E) SHED IN REAR YARD.",
+        "8. EXISTING 1-STORY SINGLE-FAMILY RESIDENCE TO REMAIN - NO WORK.",
     ], W1)
 
     y = header(msp, C1, y - 0.15, W1, "PROJECT DATA")
@@ -158,7 +129,7 @@ def build():
         ("(E) RESIDENCE LIVING AREA", "1,011 SF"),
         ("(E) RES. + GARAGE FOOTPRINT (GIS)", f"{house:,} SF"),
         ("(E) PATIO COVER (APPROX.)", f"{patio:,} SF"),
-        ("(E) SHED", "TBD - TO REMAIN OR BE REMOVED"),
+        ("(E) SHED", "TO BE REMOVED"),
         ("(N) ADU CONDITIONED AREA", f"{area:,} SF   (<= 800 SF ALLOWED)"),
         ("(N) COVERED ENTRY PORCH", f"{porch:,} SF"),
         ("TOTAL BUILDING COVERAGE", f"{cov:,} SF = {100 * cov / lot:.1f}%   (R1: NO MAXIMUM)"),

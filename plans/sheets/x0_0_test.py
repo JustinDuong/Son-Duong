@@ -116,7 +116,7 @@ def draw_site(blk, scale):
     btext(blk, "1-STORY, 1,011 SF LIVING", (ft(74), ft(25)), 0.08, scale)
     # structures seen on aerial (approximate)
     for (x0, y0, x1, y1), lab in [((ft(42), ft(23), ft(56.4), ft(42)), "(E) PATIO COVER (APPROX.)"),
-                                  ((ft(36), ft(13), ft(48), ft(23)), "(E) SHED? (APPROX.)")]:
+                                  ((ft(36), ft(13), ft(48), ft(23)), "(E) SHED - TO BE REMOVED")]:
         blk.add_lwpolyline([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], close=True, dxfattribs={"layer": "A-HIDN"})
         btext(blk, lab, ((x0 + x1) / 2, (y0 + y1) / 2), 0.06, scale)
     # ADU (outline only)
@@ -165,7 +165,7 @@ def build():
         "A. EXTERIOR WALLS 4\" (OWNER), INTERIOR 2x4.\\P"
         "B. ADU AT 5'-0\" FROM REAR AND SOUTH SIDE LINES (SCALED FROM REFERENCE). "
         "UNDER 5' WOULD REQUIRE FIRE SPRINKLERS.\\P"
-        "C. IS THE SHED STAYING OR REMOVED?"
+        "C. (E) SHED TO BE REMOVED (OWNER)."
     )
     mtext(s.msp, notes, (11.2, 9.9), h=0.12, width=17.5)
     return s
