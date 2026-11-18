@@ -126,7 +126,7 @@ def _border_and_title_block(sheet: Sheet):
         ("PROJECT", P["project_name"], 1.6),
         ("ADDRESS", P["project_address"], 1.2),
         ("APN", P["apn"], 0.6),
-        ("OWNER", P["owner"], 0.8),
+        ("JURISDICTION", "COUNTY OF ORANGE (UNINCORPORATED)", 0.8),
         ("PREPARED BY", P["designer"], 1.0),
         ("PROFESSIONAL STAMP", "", 3.0),
         ("REVISIONS", f"REV {P['revision']}", 2.4),

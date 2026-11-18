@@ -162,7 +162,7 @@ def build():
         f"3. OUTSIDE AREA FROM PRINTED DIMS = {ft_in(M.W)} x {ft_in(M.L)} = {M.area_sqft():.0f} SF "
         "(REFERENCE PLAN SAYS 799 / 800 SF).\\P"
         "ITEMS TO CONFIRM\\P"
-        "A. EXTERIOR WALLS ASSUMED 2x6 (6\"), INTERIOR 2x4.\\P"
+        "A. EXTERIOR WALLS 4\" (OWNER), INTERIOR 2x4.\\P"
         "B. ADU AT 5'-0\" FROM REAR AND SOUTH SIDE LINES (SCALED FROM REFERENCE). "
         "UNDER 5' WOULD REQUIRE FIRE SPRINKLERS.\\P"
         "C. IS THE SHED STAYING OR REMOVED?"

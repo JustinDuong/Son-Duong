@@ -9,7 +9,7 @@ from plans.lib import ft
 # ---- overall (outside face of framing)
 W = ft(20, 2.25)        # E-W width  (printed 20'-2 1/4")
 L = ft(38, 7.0625)      # N-S length (printed 38'-7 1/16")
-EXT_T = 6.0             # exterior wall: 2x6 + finishes (assumed)
+EXT_T = 4.0             # exterior wall: 4" (owner direction 2026-11-18)
 INT_T = 4.5             # interior wall: 2x4 + drywall
 
 # ---- interior partition lines (inches from SW outside corner)
@@ -59,7 +59,7 @@ BARN_DOOR = (X_BATH_E, ft(0, 8), ft(3, 2), "2680 BARN")   # bedroom 2 -> W.I.C.
 # ---- placement on the lot (lot coords: SW lot corner = 0,0, +X east toward Hunter Ln)
 LOT_W_NS = ft(62, 2.4)       # 62.2 ft (OC GIS)
 LOT_D_EW = ft(116, 0)
-ADU_ORIGIN_ON_LOT = (ft(5, 0), ft(5, 0))   # 5'-0" from rear (west) and south side lines (scaled from proposed plan)
+ADU_ORIGIN_ON_LOT = (ft(5, 0), ft(5, 0))   # 5'-0" min. from rear (west) and south side lines (owner confirmed; <5' would require sprinklers)
 
 
 def area_sqft():
